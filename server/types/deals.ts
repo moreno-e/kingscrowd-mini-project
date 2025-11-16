@@ -16,7 +16,7 @@ export interface DealsResponse {
 export interface DealsResults {
   id: number;
   name: string;
-  funding_gather_money_raised_to_date: MoneyRaisedToDate;
+  funding_gather_money_raised_to_date: MoneyRaisedToDate | null;
   company_id: CompanyId;
   raise_status: RaiseStatus;
   platform_id: {

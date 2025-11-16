@@ -3,6 +3,9 @@ import { ApiResponse, HTTP_STATUS_CODES } from '../types/api';
 
 export default cachedEventHandler(
   async (event) => {
+    const query = getQuery(event);
+    const page = Number(query.page) || 1;
+
     const filters = [
       {
         key: 'raise_status',
@@ -18,15 +21,9 @@ export default cachedEventHandler(
 
     try {
       const config = useRuntimeConfig();
-      // NOTE: Getting 404 from the health check endpoint, so we're not using it for now
-      // const healthResponse = await $fetch(config.kingscrowApiHealthUrl, {
-      //   headers: {
-      //     Authorization: `Bearer ${config.kingscrowdApiToken}`
-      //   }
-      // })
 
       const dealsResponse: DealsResponse = await $fetch(
-        `${config.kingscrowdDealsApiUrl}?filters=${encodeURIComponent(JSON.stringify(filters))}`,
+        `${config.kingscrowdDealsApiUrl}?filters=${encodeURIComponent(JSON.stringify(filters))}&page=${page}`,
         {
           method: 'GET',
           headers: {
@@ -51,5 +48,11 @@ export default cachedEventHandler(
       return handleApiError(error, 'Deals API', HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR);
     }
   },
-  { maxAge: 60 * 60 /* 1 hour */ },
+  {
+    maxAge: 60 * 60, // 1 hour
+    getKey: (event) => {
+      const query = getQuery(event);
+      return `deals-page-${query.page || 1}`; // Unique key per page
+    },
+  },
 );
