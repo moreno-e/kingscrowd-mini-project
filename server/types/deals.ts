@@ -23,6 +23,9 @@ export interface DealsResults {
     id: number;
     name: string;
   };
+  valuation: {
+    formatted: string;
+  };
   close_date: string;
 }
 
