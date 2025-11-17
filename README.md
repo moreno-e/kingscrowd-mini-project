@@ -25,7 +25,7 @@ Ran into issues implementing the UPagination with the v-model not updating the c
 ### Possible API Bug?
 - Getting 404 for api health status.
 - API docs have some formatting issues
-- Noticed when calling the last page of the results the total_pages amount changes to a different number. Possible user error but would like to investigate further
+- Noticed when calling the last page of the results the total_pages amount changes from 24 to 116. Possible user error but would like to investigate further
 Page 1:
 <img width="849" height="714" alt="Screenshot 2025-11-16 at 4 36 47 PM" src="https://github.com/user-attachments/assets/112d4377-3874-42ef-807b-1dbf3f5c5bb9" />
 Page 2:
