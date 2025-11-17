@@ -18,9 +18,9 @@ Next steps would include:
 - Update api to handle / check for rate limit and token amount
 - Update url to show current page. Enable user to copy and paste to go to specific page.
 
-### AI Tools Used - Claude AI
+### Tools Used - Claude AI & My Own API Standard Process
 
-Ran into issues implementing the UPagination with the v-model not updating the current page whenever a new page was selected. Spent more time than I would have liked attempting to fix the issue. Asked Claude to help create pagination functionality for time. Also asked to review project to ensure proper styling and accessibility was applied. As well as ensure CSV implementation was correct.
+Ran into issues implementing the UPagination with the v-model not updating the current page whenever a new page was selected. Spent more time than I would have liked attempting to fix the issue. Asked Claude to help create pagination functionality for time. Also asked to review project to ensure proper styling and accessibility that was applied. As well as ensure the CSV npm package implementation was correct. I used a api standardization process that I've used in previous projects as a guide (apiStandard.ts).
 
 ### Possible API Bug?
 - Getting 404 for api health status.
